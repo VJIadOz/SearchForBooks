@@ -1,9 +1,16 @@
 import {connect} from 'react-redux'
 import Book from './Book.js'
 import '../styles/MainContent.css'
+import InfoBook from "./infoBook.js"
+import {useState} from 'react'
 
 function MainContent(props) {
-    
+    const [selfId, setSelfId] = useState()
+
+    function changeId(link){
+        setSelfId(link)
+    }
+
     async function doFetchForLoadMore(){
         props.setLoadMoreIndex();
         alert(props.searchParameters[3])
@@ -17,40 +24,41 @@ function MainContent(props) {
         .then((data)=>formingAddList(data));
     }
     function formingAddList(data){
+        
         let masForDisplay = data.items;
         let mas = [];
         let book = {};
         for(let i=0; i<masForDisplay.length;i++){
             let volumeinfo = masForDisplay[i].volumeInfo;
-            book['authors'] = (volumeinfo['authors']) ? volumeinfo['authors'] : "" ;
-            book['title'] = volumeinfo['title'];
-            book['categorie'] = (volumeinfo['categories']) ? volumeinfo['categories'][0] : " ";
-            book['imageLink'] = (volumeinfo['imageLinks']) ? volumeinfo['imageLinks'].thumbnail : "";
+            book.authors = (volumeinfo['authors']) ? volumeinfo['authors'] : "" ;
+            book.title = volumeinfo['title'];
+            book.title = (volumeinfo['categories']) ? volumeinfo['categories'] : " ";
+            book.imageLink = (volumeinfo['imageLinks']) ? volumeinfo['imageLinks'].thumbnail : "";
+            book.selfLink = masForDisplay[i].selfLink;
             mas.push(book);
             book = {}
         }
-        console.log(mas);
+        
         props.increaseList(mas);
         props.switchStateLoadingPicture("OFF");
     }
 
     return (
         <div>
-            {
-                (props.stateMainContent === "NotFound") && 
-                <div className="titleFoundWrapper">
-                    <p className="titleFound">Found {props.totalItems} results</p>
-                </div>
+            {props.stateMainContent === "listbooks" && props.stateLoading === "NotFound" 
+                && 
+                    <div className="titleFoundWrapper">
+                        <p className="titleFound">Found {props.totalItems} results</p>
+                    </div>
             }
-            {
-                (props.stateMainContent === "LIST_READY") && 
+            {props.stateMainContent === "listbooks" && (props.stateLoading === "LIST_READY") && 
                 <div className="MainContent">
                     <div className="titleFoundWrapper">
                         <p className="titleFound">Found {props.totalItems} results</p>
                     </div>
                     <div className="list">
                         {props.list.map((value)=>
-                            <Book data={value}/>
+                            <Book data={value} changeSelfLink={changeId}/>
                         )}
                     </div>
                     {(props.totalItems > props.searchParameters[3]) &&
@@ -61,7 +69,11 @@ function MainContent(props) {
                         </div>
                     }   
                 </div>
-            }  
+            } 
+            {props.stateMainContent === "infoBook" && 
+                <InfoBook id={selfId}/>
+            }
+            
         </div>
         
     );
@@ -70,9 +82,10 @@ function MainContent(props) {
 export default connect(
     (state)=>({
         list: state.listReducer,
-        stateMainContent: state.stateLoadingReducer,
+        stateLoading: state.stateLoadingReducer,
         totalItems: state.totalItemsReducer,
-        searchParameters: state.searchParametersReducer
+        searchParameters: state.searchParametersReducer,
+        stateMainContent: state.stateMainContent
     }),
     (dispatch) => ({
         setLoadMoreIndex: () => {

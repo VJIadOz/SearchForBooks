@@ -26,17 +26,19 @@ function Header(props) {
     }
 
     function doList(data,targetBook,categorieOptions,sortingByOptions){
-        console.log(data)
-        if(data.totalItems == 0){  props.setTotalItems(0); props.switchStateMainContent("NotFound"); props.switchStateLoadingPicture("OFF"); return; }
+        props.switchMainContent();
+        console.log(data);
+        if(data.totalItems === 0){  props.setTotalItems(0); props.switchStateMainContent("NotFound"); props.switchStateLoadingPicture("OFF"); return; }
         let masForDisplay = data.items;
         let mas = [];
         let book = {};
         for(let i=0; i<masForDisplay.length;i++){
             let volumeinfo = masForDisplay[i].volumeInfo;
-            book['authors'] = (volumeinfo['authors']) ? volumeinfo['authors'] : "" ;
-            book['title'] = volumeinfo['title'];
-            book['categorie'] = (volumeinfo['categories']) ? volumeinfo['categories'][0] : " ";
-            book['imageLink'] = (volumeinfo['imageLinks']) ? volumeinfo['imageLinks'].thumbnail : "";
+            book.authors = (volumeinfo['authors']) ? volumeinfo['authors'] : "" ;
+            book.title = volumeinfo['title'];
+            book.categorie = (volumeinfo['categories']) ? volumeinfo['categories'] : " ";
+            book.imageLink = (volumeinfo['imageLinks']) ? volumeinfo['imageLinks'].thumbnail : "";
+            book.id = masForDisplay[i].id;
             mas.push(book);
             book = {}
         }
@@ -46,15 +48,16 @@ function Header(props) {
         props.switchStateMainContent("LIST_READY");
         props.setLoadMoreIndex();
         props.switchStateLoadingPicture("OFF");
+        // console.log(mas);
     }
 
     return (
         <div className="Header">
             <div className="HeaderWrapper">
-                <div className="HeaderTitleWrapper"><p  className="HeaderTitle">Search for books</p></div>
+                <div className="HeaderTitleWrapper"><p>Search for books</p></div>
                 <div className="searchBar">
                     <input className="seacrhInput" ref={inputBookRef}></input>
-                    <div className="searchButton" onClick={()=>doFetch()}><p>🔍</p></div>
+                    <div className="searchButton" onClick={()=>doFetch()}></div>
                 </div>
                 <div className="filterBar">
                     <p className="textCategories">Categories</p>
@@ -104,6 +107,9 @@ export default connect(
         },
         switchStateLoadingPicture: (state) =>{
             dispatch({type:"SWITCH_STATELOADINGPICTURE", state: state});
-        }
+        },
+        switchMainContent: () => {
+			dispatch({type: "DISPLAY_LISTBOOKS"})
+		},
     })
 )(Header);

@@ -27,7 +27,6 @@
 }
 .categoryWrapper{
     flex: 1;
-    border: 1px solid red;
     display: flex;
     align-items: center;
 }
@@ -39,7 +38,6 @@
 }
 .titleWrapper{
     flex:1;
-    border: 1px solid red;
 }
 .titleWrapper p{
     padding-left: 3%;
@@ -49,7 +47,6 @@
 }
 .authorsWrapper{
     flex:1;
-    border: 1px solid red;
 }
 .authorsWrapper p{
     color: grey;
