@@ -1,0 +1,58 @@
+
+.Book{
+    display: flex;
+    flex-direction: column;
+    height: 470px;
+    width: 330px;
+    background-color: rgb(216, 216, 216);
+    cursor: pointer;
+    margin: 20px 0px;
+}
+.imageBookWrapper{
+    flex: 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.noImageBook{
+    height: 300px;
+    width: 200px;
+    background-image: url(../noFoto.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.imageBook{
+    height: 300px;
+    width: 200px;
+}
+.categoryWrapper{
+    flex: 1;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+}
+.categoryWrapper p{
+    color: grey;
+    text-decoration: underline;
+    padding-left: 3%;
+    padding-right: 3%;  
+}
+.titleWrapper{
+    flex:1;
+    border: 1px solid red;
+}
+.titleWrapper p{
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: 19px;
+    font-weight: bold;
+}
+.authorsWrapper{
+    flex:1;
+    border: 1px solid red;
+}
+.authorsWrapper p{
+    color: grey;
+    padding-left: 3%;
+    padding-right: 3%;
+}

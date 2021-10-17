@@ -1,0 +1,71 @@
+.Header{
+    height: 200px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+.HeaderWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid red;
+    width: 50%;
+}
+.HeaderTitleWrapper{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid red;
+}
+.HeaderTitle{
+    font-size: 40px;
+    font-weight: bold;
+}
+.searchBar{
+    flex:1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+}
+.seacrhInput{
+    width: 80%;
+    height: 20px;
+}
+.searchButton{
+    cursor: pointer;
+    height: 24px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+}
+.searchButton p{
+    /* border: 1px solid red; */
+}
+.filterBar{
+    flex:1;
+    display: flex;
+    width: 100%;
+    border: 1px solid red;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.textCategories{
+    font-size: 20px;
+}
+.selectCategories{
+    height: 65%;
+    width: 30%;
+}
+.textSortingBy{
+    font-size: 20px;
+}
+.selectSortingBy{
+    height: 65%;
+    width: 30%;
+}

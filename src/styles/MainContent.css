@@ -1,0 +1,36 @@
+.MainContent{
+    z-index: 1;
+}
+.list{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.titleFoundWrapper{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+}
+.titleFound{
+    font-weight: bold;
+}
+.loadMoreWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.loadMore{
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0px -12px 0px -10px grey,
+                7px 0px 0px -5px grey,
+                0px 12px 0px -10px grey,
+                -7px 0px 0px -5px grey;
+
+}
+
+.loadMoreTitle{
+    padding: 6px
+}
