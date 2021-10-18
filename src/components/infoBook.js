@@ -14,13 +14,41 @@ function InfoBook(props) {
     }, [])
 
     function prepareData(resData){
-        
+
+        for(let key in resData.imageLinks){
+            switch(key){
+                case "extraLarge":
+                    setdata({image:resData.imageLinks.extraLarge});
+                    break;
+                case "large":
+                    setdata({image:resData.imageLinks.large});
+                    break;
+                case "medium":
+                    setdata({image:resData.imageLinks.medium});
+                    break;
+                case "small":
+                    setdata({image:resData.imageLinks.small});
+                    break;
+                case "thumbnail":
+                    setdata({image:resData.imageLinks.thumbnail});
+                    break;
+                case "smallThumbnail":
+                    setdata({image:resData.imageLinks.smallThumbnail});
+                    break;
+                default:
+                    setdata({image: ""});
+            }
+        }
+        let description = document.querySelector(".descriptionInfoWrapper");
+        if(resData.description)
+            description.insertAdjacentHTML('afterbegin', resData.description);
+        else 
+            description.insertAdjacentHTML('afterbegin', '<p>Описание отсутствует</p>');
         setdata({
             image: resData.imageLinks,
             authors: (resData.authors) ? resData.authors.join(", ") : "",
             categories: (resData.categories) ? resData.categories.join(", ") : "",
             title: resData.title,
-            description: resData.description
         })
         console.log(resData)
     }
@@ -31,14 +59,14 @@ function InfoBook(props) {
             {data.image === "" ?
                 <div className="noBookImage"></div>
             :
-                <img className="bookImage" style={{backgroundImage: `url(${data.image.medium})`}}></img>
+                <img className="bookImage" style={{backgroundImage: `url(${data.image})`}}></img>
             }
             </div>
             <div className="infoBook">
                 <div className="categoryInfoWrapper"><p>{data.categories}</p></div>
                 <div className="titleInfoWrapper"><p>{data.title}</p></div>
                 <div className="authorsInfoWrapper"><p>{data.authors}</p></div>
-                <div className="descriptionInfoWrapper"><p>{data.description}</p></div>
+                <div className="descriptionInfoWrapper"></div>
             </div>
         </div>
     );

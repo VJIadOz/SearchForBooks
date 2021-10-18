@@ -2,18 +2,31 @@ import {connect} from 'react-redux'
 import Book from './Book.js'
 import '../styles/MainContent.css'
 import InfoBook from "./infoBook.js"
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+// import script from '../scroll.js'
 
 function MainContent(props) {
-    const [selfId, setSelfId] = useState()
+    const [scrollUp, setScrollUp] = useState();
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll, { passive: true });
+    }, []);
+    function handleScroll(){
+        const position = window.pageYOffset;
+        if (position > 400) {
+            setScrollUp(true);
+        }
+        if (position < 401) {
+            setScrollUp(false);
+        }
+    };
 
+    const [selfId, setSelfId] = useState()
     function changeId(link){
         setSelfId(link)
     }
 
     async function doFetchForLoadMore(){
         props.setLoadMoreIndex();
-        alert(props.searchParameters[3])
         props.switchStateLoadingPicture("ON");
         await fetch(`https://www.googleapis.com/books/v1/volumes?q=${props.searchParameters[0]}+subject:${(props.searchParameters[1]!=="all") ? props.searchParameters[1] : ""}&orderBy=${props.searchParameters[2]}&startIndex=${props.searchParameters[3]+1}&maxResults=30&key=AIzaSyCcd3yzDrqSSLD8SyNnleU-UAaFX5pPHps`,{method: "get"})
         .then((response)=>{
@@ -23,8 +36,8 @@ function MainContent(props) {
         )
         .then((data)=>formingAddList(data));
     }
+
     function formingAddList(data){
-        
         let masForDisplay = data.items;
         let mas = [];
         let book = {};
@@ -34,7 +47,7 @@ function MainContent(props) {
             book.title = volumeinfo['title'];
             book.title = (volumeinfo['categories']) ? volumeinfo['categories'] : " ";
             book.imageLink = (volumeinfo['imageLinks']) ? volumeinfo['imageLinks'].thumbnail : "";
-            book.selfLink = masForDisplay[i].selfLink;
+            book.id = masForDisplay[i].id;
             mas.push(book);
             book = {}
         }
@@ -44,7 +57,7 @@ function MainContent(props) {
     }
 
     return (
-        <div>
+        <>
             {props.stateMainContent === "listbooks" && props.stateLoading === "NotFound" 
                 && 
                     <div className="titleFoundWrapper">
@@ -73,8 +86,12 @@ function MainContent(props) {
             {props.stateMainContent === "infoBook" && 
                 <InfoBook id={selfId}/>
             }
-            
-        </div>
+            {scrollUp && 
+                <div className="scrollToUpButton" onClick={()=>window.scrollTo(0,0)}>
+                    <p>🠕</p>
+                </div>
+            }       
+        </>
         
     );
 }

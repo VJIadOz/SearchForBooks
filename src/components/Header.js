@@ -55,26 +55,32 @@ function Header(props) {
         <div className="Header">
             <div className="HeaderWrapper">
                 <div className="HeaderTitleWrapper"><p>Search for books</p></div>
-                <div className="searchBar">
-                    <input className="seacrhInput" ref={inputBookRef}></input>
-                    <div className="searchButton" onClick={()=>doFetch()}></div>
+                <div className="searchBarWrapper">
+                    <div className="searchBarMiniWrapper">
+                        <input className="seacrhInput" ref={inputBookRef}></input>
+                        <div className="searchButton" onClick={()=>doFetch()}></div>
+                    </div>
                 </div>
-                <div className="filterBar">
-                    <p className="textCategories">Categories</p>
-                    <select className="selectCategories" ref={categoriesRef}>
-                        <option>all</option>
-                        <option>art</option>
-                        <option>biography</option>
-                        <option>computers</option>
-                        <option>history</option>
-                        <option>medical</option>
-                        <option>poetry</option>
-                    </select>
-                    <p className="textSortingBy">Sorting By</p>
-                    <select className="selectSortingBy" ref={sortingByRef}>
-                        <option>relevance</option>
-                        <option>newest</option>
-                    </select>
+                <div className="filterBarWrapper">
+                    <div className="categoriesWrapper">
+                        <p className="textCategories">Categories</p>
+                        <select className="selectCategories" ref={categoriesRef}>
+                            <option>all</option>
+                            <option>art</option>
+                            <option>biography</option>
+                            <option>computers</option>
+                            <option>history</option>
+                            <option>medical</option>
+                            <option>poetry</option>
+                        </select>
+                    </div>
+                    <div className="sortingByWrapper">
+                        <p className="textSortingBy">Sorting By</p>
+                        <select className="selectSortingBy" ref={sortingByRef}>
+                            <option>relevance</option>
+                            <option>newest</option>
+                        </select>
+                    </div>   
                 </div>
             </div>
         </div>

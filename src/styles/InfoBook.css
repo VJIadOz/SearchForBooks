@@ -1,9 +1,10 @@
 .infoBookWrapper{
-    height: 100%;
+    height: 70%;
     width: 100%;
     display: flex;
     flex-direction: row;  
-    border: 2px solid green;   
+    margin-bottom: 20px;
+    min-height: 530px;
 }
 .bookImageWrapper{
     width: 40%;
@@ -14,10 +15,10 @@
     align-items: center;
 }
 .bookImage{
-    height: 500px;
-    width: 350px;
+    height: 80%;
+    width: 300px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: 50% 50%;
 }
 .noBookImage{
@@ -30,39 +31,61 @@
 
 .infoBook{
     width: 60%;
-    height: 100%;
+    height: 98%;
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 10px;
 }
 
 .categoryInfoWrapper{
-    border: 1px solid red;
     padding: 10px 0px;
 }
 .categoryInfoWrapper p{
-
+    color: grey;
 }
 .titleInfoWrapper{
-    border: 1px solid red;
     padding: 10px 0px;
 }
 .titleInfoWrapper p{
-    
+    font-weight: 600;
+    font-size: 20px;
 }
 .authorsInfoWrapper{
-    border: 1px solid red;
     padding: 10px 0px;
 }
 .authorsInfoWrapper p{
-
+    color: grey;
+    text-decoration: underline;
 }
 .descriptionInfoWrapper{
-    padding: 10px;
-    max-height: 400px;
+    padding: 15px;
+    max-height: 350px;
     overflow-y: auto;
     border: 1px solid grey;
 }
 .descriptionInfoWrapper p{
-    
+    font-weight: 600;
+}
+
+
+@media (max-width:640px) {
+    .infoBook{
+        height: auto;
+        width: 80%;
+    }
+    .infoBookWrapper{
+        flex-direction: column;
+    }
+    .bookImageWrapper{
+        width: 100%;
+    }
+    .bookImage{
+        height: 300px;
+        width: 200px;
+    }
+    .descriptionInfoWrapper{
+        width: 100%;
+        max-height: unset;
+        height: auto;
+    }
 }

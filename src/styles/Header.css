@@ -1,6 +1,7 @@
 .Header{
     width: 100%;
     height: 30%;
+    min-height: 228px;
     display: flex;
     background-image: url(../backgroundHeader.jpg);
     background-repeat: no-repeat;
@@ -25,53 +26,104 @@
     font-weight: bold;
     color: white;
 }
-.searchBar{
+.searchBarWrapper{
     flex:1;
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.seacrhInput{
+.searchBarMiniWrapper{
+    display: flex;
     width: 80%;
+    height: 50%;
+    /* border: 1px solid red */
+}
+.seacrhInput{
+    width: 100%;
     height: 25px;
+    border: 0;
+    border-bottom:  2px solid white;
 }
 .searchButton{
     cursor: pointer;
-    height: 25px;
-    width: 25px;
+    height: 100%;
+    width: 30px;
     text-align: center;
     display: flex;
     align-items: center;
-    /* border: 1px solid grey; */
     background-image: url(../searchImage.svg);
     background-color: white;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-.searchButton p{
-    /* border: 1px solid red; */
-}
-.filterBar{
+
+.filterBarWrapper{
     flex:1;
     display: flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+.categoriesWrapper{
+    display: flex;
+    height: 100%;
     align-items: center;
+    justify-content: center;
+    width: 50%;
 }
 .textCategories{
     font-size: 20px;
     color: white;
     font-weight: bold;
+    margin-right: 5%;
 }
 .selectCategories{
     height: 65%;
-    width: 30%;
+    justify-self: flex-end;
+    width: 50%;
+}
+.sortingByWrapper{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+
 }
 .textSortingBy{
     font-size: 20px;
     color: white;
     font-weight: bold;
+    margin-right: 5%;
+
 }
 .selectSortingBy{
     height: 65%;
-    width: 30%;
+    width: 50%;
+}
+
+@media (max-width:1000px) {
+    .filterBarWrapper{
+        flex-direction: column;
+        justify-content: center;
+        flex: 1.5;
+    }
+    .categoriesWrapper{
+        width: 100%;
+    }
+    .selectCategories{
+        height: 80%;
+    }
+    .sortingByWrapper{
+        width: 100%;
+    }
+    .selectSortingBy{
+        height: 80%;
+    }
+}
+@media (max-width:640px) {
+    .HeaderWrapper{
+        width: 100%;
+    }
+    
 }
