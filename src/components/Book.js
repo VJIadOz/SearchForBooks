@@ -1,7 +1,7 @@
 import '../styles/Book.css'
 import {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-
+import {Link} from "react-router-dom"
 
 function Book(props) {
 	const [authors, setAuthors] = useState();
@@ -9,9 +9,8 @@ function Book(props) {
 	if(props.data.authors)
 		setAuthors(props.data.authors.join(", "));
 	}, []);
-  
 	return (
-		<a className="Book" onClick={()=>{ props.switchMainContent(); props.changeSelfLink(props.data.id);}}>
+		<Link to={`/books/${props.data.id}`} className="Book" >
 			<div className="imageBookWrapper">
 				{props.data.imageLink=="" 
 				?
@@ -24,17 +23,8 @@ function Book(props) {
 			<div className="categoryWrapper"><p>{props.data.categorie}</p></div>
 			<div className="titleWrapper"><p>{props.data.title}</p></div>
 			<div className="authorsWrapper"><p>{authors}</p></div>
-		</a>
+		</Link>
   );
 }
 
-export default connect(
-	(state)=>({
-
-  	}),
-	(dispatch) => ({
-		switchMainContent: () => {
-			dispatch({type: "DISPLAY_VIEWBOOK"})
-		}
-	})
-)(Book);
+export default Book;

@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 import Book from './Book.js'
 import '../styles/MainContent.css'
-import InfoBook from "./infoBook.js"
 import {useState, useEffect} from 'react'
 // import script from '../scroll.js'
 
@@ -84,9 +83,9 @@ function MainContent(props) {
                     }   
                 </div>
             } 
-            {props.stateMainContent === "infoBook" && 
+            {/* {props.stateMainContent === "infoBook" && 
                 <InfoBook id={selfId}/>
-            }
+            } */}
             {scrollUp && 
                 <div className="scrollToUpButton" onClick={()=>window.scrollTo(0,0)}>
                     <p>🠕</p>

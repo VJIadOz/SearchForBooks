@@ -1,7 +1,7 @@
 import '../styles/Header.css'
 import React  from 'react'
 import {connect} from 'react-redux'
-
+import {Link} from "react-router-dom"
 
 function Header(props) {
 
@@ -54,11 +54,11 @@ function Header(props) {
     return (
         <div className="Header">
             <div className="HeaderWrapper">
-                <div className="HeaderTitleWrapper"><p>Search for books</p></div>
+                <Link to={'/'} className="HeaderTitleWrapper"><p>Search for books</p></Link>
                 <div className="searchBarWrapper">
                     <div className="searchBarMiniWrapper">
                         <input className="seacrhInput" ref={inputBookRef}></input>
-                        <div className="searchButton" onClick={()=>doFetch()}></div>
+                        <Link to={`/books`} className="searchButton" onClick={()=>doFetch()}></Link>
                     </div>
                 </div>
                 <div className="filterBarWrapper">

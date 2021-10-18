@@ -52,4 +52,12 @@
     color: grey;
     padding-left: 3%;
     padding-right: 3%;
+    text-decoration: none;
+}
+a{
+    color: black;
+    text-decoration: unset;
+}
+a:active{
+
 }

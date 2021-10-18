@@ -1,10 +1,10 @@
 import '../styles/InfoBook.css'
 import {useEffect, useState} from 'react'
 
-function InfoBook(props) {
+function InfoBook({match},props) {
     const [data, setdata] = useState({image:"",title:"",authors:"",description:"",categories:""})
     useEffect(() => {
-        fetch(`https://www.googleapis.com/books/v1/volumes/${props.id}?key=AIzaSyCcd3yzDrqSSLD8SyNnleU-UAaFX5pPHps`, {method: 'get'})
+        fetch(`https://www.googleapis.com/books/v1/volumes/${match.params.id}?key=AIzaSyCcd3yzDrqSSLD8SyNnleU-UAaFX5pPHps`, {method: 'get'})
         .then((response)=>{
             if(response.status===200)
                 return response.json();
