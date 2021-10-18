@@ -10,6 +10,7 @@ function MainContent(props) {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll, { passive: true });
     }, []);
+    
     function handleScroll(){
         const position = window.pageYOffset;
         if (position > 400) {
