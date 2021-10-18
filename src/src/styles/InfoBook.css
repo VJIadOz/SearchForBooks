@@ -1,0 +1,91 @@
+.infoBookWrapper{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;  
+    margin-bottom: 20px;
+    min-height: 530px;
+}
+.bookImageWrapper{
+    width: 40%;
+    height: 100%;
+    background-color: rgb(199, 199, 199);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bookImage{
+    height: 80%;
+    width: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+.noBookImage{
+    height: 500px;
+    width: 350px;
+    background-image: url(../noFoto_big.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.infoBook{
+    width: 60%;
+    height: 98%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+}
+
+.categoryInfoWrapper{
+    padding: 10px 0px;
+}
+.categoryInfoWrapper p{
+    color: grey;
+}
+.titleInfoWrapper{
+    padding: 10px 0px;
+}
+.titleInfoWrapper p{
+    font-weight: 600;
+    font-size: 20px;
+}
+.authorsInfoWrapper{
+    padding: 10px 0px;
+}
+.authorsInfoWrapper p{
+    color: grey;
+    text-decoration: underline;
+}
+.descriptionInfoWrapper{
+    padding: 15px;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid grey;
+}
+.descriptionInfoWrapper p{
+    font-weight: 600;
+}
+
+
+@media (max-width:640px) {
+    .infoBook{
+        height: auto;
+        width: 80%;
+    }
+    .infoBookWrapper{
+        flex-direction: column;
+    }
+    .bookImageWrapper{
+        width: 100%;
+    }
+    .bookImage{
+        height: 300px;
+        width: 200px;
+    }
+    .descriptionInfoWrapper{
+        width: 100%;
+        max-height: unset;
+        height: auto;
+    }
+}
