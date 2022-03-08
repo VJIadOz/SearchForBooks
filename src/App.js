@@ -1,9 +1,9 @@
-import './styles/App.css';
-import Header from './components/Header.js';
-import MainContent from './components/MainContent.js';
-import Loading from './components/Loading';
+import './App.css';
+import Header from './components/Header/Header.js';
+import MainContent from './components/MainContent/MainContent.js';
+import Loading from './components/Loading/Loading.js';
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import InfoBook from "./components/infoBook.js"
+import InfoBook from "./components/infoBook/infoBook.js"
 
 function App() {
 
